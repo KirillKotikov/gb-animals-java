@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.kotikov.models.*;
 import ru.kotikov.repositories.AnimalRepository;
 
+import java.time.Instant;
 import java.util.Optional;
 
 @Service
@@ -118,20 +119,11 @@ public class RegistryServiceImpl implements RegistryService {
     private void addPackAnimal(int option) {
         try {
             String name = ioService.readLineWithPrompt("Введите кличку: ");
-            String breed = ioService.readLineWithPrompt("Введите породу: ");
             String commands = ioService.readLineWithPrompt("Введите команды через запятую \",\" с пробелом после: ");
-            int loadCapacity = 0;
-            try {
-                loadCapacity = Integer.parseInt(ioService
-                        .readLineWithPrompt("Введите грузоподъёмность (целое число): "));
-            } catch (NumberFormatException exception) {
-                ioService.printLine("Вы ввели не число!");
-                addPackAnimal();
-            }
             switch (option) {
-                case 1 -> repository.addAnimal(new Horse(name, breed, commands, loadCapacity));
-                case 2 -> repository.addAnimal(new Camel(name, breed, commands, loadCapacity));
-                case 3 -> repository.addAnimal(new Donkey(name, breed, commands, loadCapacity));
+                case 1 -> repository.addAnimal(new Horse(Instant.now(), name, commands));
+                case 2 -> repository.addAnimal(new Camel(Instant.now(), name, commands));
+                case 3 -> repository.addAnimal(new Donkey(Instant.now(), name, commands));
             }
         } catch (Exception exception) {
             throw new RuntimeException("Возникла ошибка при сохранении вьючного животного");
@@ -158,12 +150,11 @@ public class RegistryServiceImpl implements RegistryService {
     private void addPet(int option) {
         try {
             String name = ioService.readLineWithPrompt("Введите кличку: ");
-            String breed = ioService.readLineWithPrompt("Введите породу: ");
             String commands = ioService.readLineWithPrompt("Введите команды через запятую \",\" с пробелом после: ");
             switch (option) {
-                case 1 -> repository.addAnimal(new Dog(name, breed, commands));
-                case 2 -> repository.addAnimal(new Cat(name, breed, commands));
-                case 3 -> repository.addAnimal(new Hamster(name, breed, commands));
+                case 1 -> repository.addAnimal(new Dog(Instant.now(), name, commands));
+                case 2 -> repository.addAnimal(new Cat(Instant.now(), name, commands));
+                case 3 -> repository.addAnimal(new Hamster(Instant.now(), name, commands));
             }
         } catch (Exception exception) {
             throw new RuntimeException("Возникла ошибка при сохранении домашнего животного");

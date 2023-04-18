@@ -3,25 +3,14 @@ package ru.kotikov.models;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.time.Instant;
 
 @Getter
 @Setter
 public abstract class Pet extends Animal {
-    protected List<String> commands;
-
-    protected String name;
-
-
-    public Pet(String name, String breed, String commands) {
-        this.breed = breed;
-        this.name = name;
-        this.commands = Arrays.stream(commands.split(", ")).collect(Collectors.toList());
+    public Pet(Instant dateOfBirth, String name, String commands) {
+        super(dateOfBirth, name, commands);
     }
-
-    public abstract void voice();
 
     public void addCommand(String command) {
         this.commands.add(command);
@@ -29,10 +18,6 @@ public abstract class Pet extends Animal {
 
     @Override
     public String toString() {
-        return "Домашнее животное: " +
-                "id = " + id +
-                ", кличка = '" + name + '\'' +
-                ", порода = '" + breed + '\'' +
-                ", комманды = " + String.join(", ", commands);
+        return "Домашнее животное: " + super.toString();
     }
 }

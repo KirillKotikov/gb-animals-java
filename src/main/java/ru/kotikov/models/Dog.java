@@ -1,13 +1,9 @@
 package ru.kotikov.models;
 
+import java.time.Instant;
+
 public class Dog extends Pet {
-
-    public Dog(String name, String breed, String commands) {
-        super(name, breed, commands);
-    }
-
-    @Override
-    public void voice() {
-        System.out.println("Bark!");
+    public Dog(Instant dateOfBirth, String name, String commands) {
+        super(dateOfBirth, name, commands);
     }
 }

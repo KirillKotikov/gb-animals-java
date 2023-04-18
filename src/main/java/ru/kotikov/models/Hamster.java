@@ -1,12 +1,9 @@
 package ru.kotikov.models;
 
-public class Hamster extends Pet{
-    public Hamster(String name, String breed, String commands) {
-        super(name, breed, commands);
-    }
+import java.time.Instant;
 
-    @Override
-    public void voice() {
-        System.out.println("Squeak");
+public class Hamster extends Pet {
+    public Hamster(Instant dateOfBirth, String name, String commands) {
+        super(dateOfBirth, name, commands);
     }
 }
