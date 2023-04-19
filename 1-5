@@ -1,0 +1,59 @@
+kirill_kotikov@Ubuntu:~$ sudo su
+root@Ubuntu:/home/kirill_kotikov# mkdir animals
+root@Ubuntu:/home/kirill_kotikov# cd animals/
+
+    1. Используя команду cat в терминале операционной системы Linux, 
+    создатьдва файла Домашние животные (заполнив файл собаками, кошками,хомяками) и 
+    Вьючные животными заполнив файл Лошадьми, верблюдами иослы), а затем объединить их. 
+    Просмотреть содержимое созданного файла.Переименовать файл, дав ему новое имя (Друзья человека).
+
+root@Ubuntu:/home/kirill_kotikov/animals# nano pets
+root@Ubuntu:/home/kirill_kotikov/animals# cat pets
+dogs
+cats
+hamsters
+root@Ubuntu:/home/kirill_kotikov/animals# nano pack_animals
+root@Ubuntu:/home/kirill_kotikov/animals# cat pack_animals 
+horses
+camels
+donkeys
+root@Ubuntu:/home/kirill_kotikov/animals# cat pets pack_animals > human_friends
+root@Ubuntu:/home/kirill_kotikov/animals# cat human_friends 
+dogs
+cats
+hamsters
+horses
+camels
+donkeys
+
+    2. Создать директорию, переместить файл туда.
+
+root@Ubuntu:/home/kirill_kotikov/animals# mkdir dir
+root@Ubuntu:/home/kirill_kotikov/animals# mv human_friends dir/
+root@Ubuntu:/home/kirill_kotikov/animals# cd dir/
+root@Ubuntu:/home/kirill_kotikov/animals/dir# ls
+human_friends
+
+    3. Подключить дополнительный репозиторий MySQL. Установить любой пакетиз этого репозитория.
+
+root@Ubuntu:/home/kirill_kotikov/animals/dir# apt-get update
+root@Ubuntu:/home/kirill_kotikov/animals/dir# apt-get install mysql
+
+    4. Установить и удалить deb-пакет с помощью dpkg.
+
+root@Ubuntu:/home/kirill_kotikov/animals/dir# dpkg -i /home/kirill_kotikov/downloads/cowsay_3.03+dfsg2-7_all.deb 
+Selecting previously unselected package cowsay.
+(Reading database ... 206810 files and directories currently installed.)
+Preparing to unpack .../cowsay_3.03+dfsg2-7_all.deb ...
+Unpacking cowsay (3.03+dfsg2-7) ...
+Setting up cowsay (3.03+dfsg2-7) ...
+Processing triggers for man-db (2.10.2-1) ...
+root@Ubuntu:/home/kirill_kotikov/animals/dir# dpkg -r cowsay
+(Reading database ... 206870 files and directories currently installed.)
+Removing cowsay (3.03+dfsg2-7) ...
+Processing triggers for man-db (2.10.2-1) ...
+
+    5. Выложить историю команд в терминале ubuntu
+
+root@Ubuntu:/home/kirill_kotikov/animals/dir# history
+
